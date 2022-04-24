@@ -1,0 +1,38 @@
+while true 
+do
+
+	echo -n 'myprompt > '
+	read commandLine
+
+	command=$(echo $commandLine | cut -d' ' -f1)
+
+
+		if [ "$command" = "myfinger" ] || [ "$command" = "mywhich" ] || [ "$command" = "mycp" ] || [ "$command" = "mydel" ] || [ "$command" = "myhelp" ]
+		then
+			$commandLine
+
+		elif [ "$command" = "myexit" ]
+		then
+			echo "---------------------------------"
+			if [ "$commandLine" = "$command" ]
+			then
+				echo exit mysh shell
+				break 
+
+			else
+				echo Usage: myexit
+			fi
+
+
+		else 
+			echo "---------------------------------"
+			echo Command not found
+		fi
+	
+
+	echo ""
+	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+	echo ""
+
+done

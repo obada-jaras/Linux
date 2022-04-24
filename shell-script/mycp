@@ -1,0 +1,23 @@
+echo "---------------------------------"
+
+if [ $# -eq 2 ]
+then
+	if [ -f $1 ]
+	then
+		cat $1 > $2
+		echo File [$1] copied to file [$2]
+	
+	elif [ -d $1 ]
+	then
+		echo $1 is a directory, mycopy is just for files
+
+	else 
+		echo File $1 does not exist
+
+	fi
+
+
+else
+	echo Usage: mycp srcfile dstfile
+fi
+

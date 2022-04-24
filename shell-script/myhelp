@@ -1,0 +1,70 @@
+myfinger="[myfinger] this command displays info about given names | Usage: myfinger name1 name2 name3 ..." 
+
+mywhich="[mywhich] this command checks each directory listed in PATH variable for each commands given as arguments | Usage: mywhich command1 command2 command3 ..."
+
+mycp="[mycp] this command only copies a given file to a given destination | Usage: mycp srcfile dstfile"
+
+mydel="[mydel] this command deletes any file(s) or directorie(s) given | Usage: mydel filename(s) directoryname(s)"
+
+myhelp="[myhelp] this command displays one line of help for any of my commands | Usage: myhelp command1 command2 command3 ..."
+
+myexit="[myexit] this command lets the users exit the shell script mysh and return to original shell | Usage: myexit"
+
+
+
+if [ $# -ne 0 ]
+then
+	while [ $# -ne 0 ]
+	do
+
+		echo "---------------------------------"
+
+		case $1 in
+			"myfinger") echo $myfinger
+			;;
+
+
+			"mywhich") echo $mywhich
+			;;
+
+
+			"mycp") echo $mycp
+			;;
+
+
+			"mydel") echo $mydel
+			;;
+
+
+			"myhelp") echo $myhelp
+			;;
+
+			
+			"myexit") echo $myexit
+			;;
+
+	
+			*) echo command $1 is not from '(mycommand)s'
+
+		esac
+		shift
+	done	
+
+else
+
+
+	echo "---------------------------------"
+	echo $myfinger
+	echo "---------------------------------"
+	echo $mywhich
+	echo "---------------------------------"
+	echo $mycp
+	echo "---------------------------------"
+	echo $mydel
+	echo "---------------------------------"
+	echo $myhelp
+	echo "---------------------------------"
+	echo $myexit
+
+fi
+

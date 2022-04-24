@@ -1,0 +1,39 @@
+if [ $# -ne 0 ]
+then
+
+	while [ $# -ne 0 ]
+	do 
+		user=$(more /etc/passwd | cut -d: -f1 | grep "^$1$")
+		echo "---------------------------------"
+
+		if [ "$user" != "" ]
+		then
+
+			rr=$(grep "^$user" /etc/passwd)
+
+			echo Login Name: $(echo $rr | cut -d: -f1 | tr ',' ' ')
+			echo Full Name: $(echo $rr |cut -d: -f5 | tr ',' ' ' | tr '_' ' ')
+			echo Home Directory: $(echo $rr | cut -d: -f6)
+			echo Defualt Shell: $(echo $rr | cut -d: -f7)
+
+		else
+			echo $1 is not an exist user
+		fi
+
+
+		shift
+	done
+
+else
+	users=$(who | cut -d: -f1)
+	for line in $users
+	do
+		echo "---------------------------------"
+		rr=$(grep $line /etc/passwd)
+		echo Login Name: $(echo $rr | cut -d: -f1 | tr ',' ' ')
+		echo Full Name: $(echo $rr |cut -d: -f5 | tr ',' ' ' | tr '_' ' ')
+                echo Home Directory: $(echo $rr | cut -d: -f6)
+                echo Defualt Shell: $(echo $rr | cut -d: -f7)
+	done
+fi
+
